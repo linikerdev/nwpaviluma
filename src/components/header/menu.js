@@ -10,6 +10,10 @@ export default (props) => {
         setOpen(!openMenu)
     }
 
+    const mountMenu = () => {
+        return props.itens.map((it, i) => <Item title={it.title} key={i} className="nav-item"> {it.title} </Item>)
+    }
+
     return (
         <Menu>
             {isMobile ? (
@@ -22,10 +26,7 @@ export default (props) => {
             ) : ""}
             <CollapseMenu open={openMenu} id="collapsibleNavbar">
                 < NavItens >
-                    <Item className="nav-item"> Home </Item>
-                    <Item className="nav-item"> Sobre </Item>
-                    <Item className="nav-item"> Serviços </Item>
-                    <Item className="nav-item"> Contato </Item>
+                    {mountMenu()}
                 </NavItens>
             </CollapseMenu>
         </Menu >
@@ -52,7 +53,7 @@ const NavItens = styled.ul.attrs({
 
 const Item = styled.li`
     cursor: pointer;
-    padding: 10px;
+    padding: 12px;
     margin: 1px 10px;
     color: #fff;
     font-family: 'Hind', sans-serif;
@@ -79,12 +80,10 @@ const MobileMenu = styled.div.attrs({
     flex:1;
     border-bottom: thin solid #eee7;
     transition: all 0.5s ease-out;
-    
     .navbar-brand {  flex:1; }
     .navbar-toggler:active{ background-color: #E3710A}
   
 `
-
 
 const CollapseMenu = styled.div.attrs({
     className: ["collapse", "navbar-collapse", "show"]

@@ -10,13 +10,19 @@ import logo from '../../assets/logo/logo.png'
 export default (props) => {
   const [slide, setSlide] = useState(1)
 
+  const [MenuList] = useState([
+    { title: 'home' },
+    { title: 'Sobre' },
+    { title: 'Serviços' },
+    { title: 'Contato' }
+  ])
+
   useEffect(() => {
 
     const interval = setInterval(() => {
       const sl = slide === 3 ? 1 : slide + 1
       setSlide(sl)
     }, 5000);
-    console.log(slide)
 
     return () => clearInterval(interval);
 
@@ -33,7 +39,7 @@ export default (props) => {
         <img src={logo} alt="logo" />
       </BarLogo>
       <Container>
-        <Menu itens={props.menu} />
+        <Menu itens={MenuList} />
       </Container>
     </Header>
   )
