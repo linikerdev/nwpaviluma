@@ -1,12 +1,25 @@
-import React from 'react';
-import './App.css';
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
+import Content from './components/layout/layout'
+import Header from './components/header/header'
 
-function App() {
+// import { Container } from './styles';
+
+export default () => {
+
+  const [MenuList] = useState([
+    { title: 'home' },
+    { title: 'Sobre' },
+    { title: 'Serviços' },
+    { title: 'Contato' }
+  ])
+
+
   return (
-    <div className="App">
-     <h1>asdasd</h1>
-    </div>
-  );
-}
+    <Content>
+      <Header menu={MenuList} />
+    </Content>
+  )
 
-export default App;
+}
