@@ -4,6 +4,7 @@ import './App.css'
 import Content from './components/layout/layout'
 import Header from './components/header/header'
 import Info from './components/info/info'
+import Services from './components/services/services'
 
 export default () => {
 
@@ -11,6 +12,7 @@ export default () => {
     <Content>
       <Header />
       <Info />
+      <Services />
     </Content>
   )
 
