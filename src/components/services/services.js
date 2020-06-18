@@ -13,8 +13,8 @@ export default (props) => {
         { title: "INSPEÇÃO DE REVESTIMENTO", icon: "icon6.png", image: "image5.png" }
     ])
 
-    const makeBox = (img, icon, text) => (
-        <Box sm="6" xs="6" md="4">
+    const makeBox = (img, icon, text, index) => (
+        <Box sm="6" xs="6" md="4" key={index}>
             <img className="bg" src={require(`../../assets/services_images/${img}`)} alt="image1" />
             <BoxText>
                 <img src={require(`../../assets/services_icons/${icon}`)} alt="icon1" />
@@ -22,7 +22,6 @@ export default (props) => {
             </BoxText>
         </Box>
     )
-
 
     return (
         <Services>
@@ -32,7 +31,7 @@ export default (props) => {
                 Os serviços de construção de estradas da Paviluma são o desempenho e a durabilidade de materiais e produtos para estradas.
                 </Subtitle>
             <Row >
-                {services.map(({ title, icon, image }) => makeBox(image, icon, title))}
+                {services.map(({ title, icon, image }, index) => makeBox(image, icon, title, index))}
             </Row>
         </Services >
     )

@@ -11,6 +11,7 @@
     "react-device-detect": "^1.12.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "react-scroll-section": "^2.1.0",
     "reactstrap": "^8.4.1",
     "styled-components": "^5.1.1"
   },

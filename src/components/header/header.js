@@ -15,15 +15,7 @@ import '../../assets/slides/slider3.jpg'
 export default (props) => {
   const [slide, setSlide] = useState(1)
 
-  const [MenuList] = useState([
-    { title: 'home' },
-    { title: 'Sobre' },
-    { title: 'Serviços' },
-    { title: 'Contato' }
-  ])
-
   useEffect(() => {
-
     const interval = setInterval(() => {
       const sl = slide === 3 ? 1 : slide + 1
       setSlide(sl)
@@ -31,7 +23,7 @@ export default (props) => {
 
     return () => clearInterval(interval);
 
-  }, [slide]);
+  }, [props, slide]);
 
   const getSlide = (num) => {
     const sl = require(`../../assets/slides/slider${num}.jpg`)
@@ -44,7 +36,7 @@ export default (props) => {
         <img src={logo} alt="logo" />
       </BarLogo>
       <Container>
-        <Menu itens={MenuList} />
+        <Menu itens={props.menu} />
       </Container>
     </Header>
   )

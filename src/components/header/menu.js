@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
 import { isMobile } from 'react-device-detect';
+import { SectionLink } from 'react-scroll-section';
 
 export default (props) => {
 
@@ -11,7 +12,13 @@ export default (props) => {
     }
 
     const mountMenu = () => {
-        return props.itens.map((it, i) => <Item title={it.title} key={i} className="nav-item"> {it.title} </Item>)
+        return props.itens.map((it, i) => {
+            return (
+                <SectionLink section={it.id} key={i}>
+                    {({ onClick, isSelected }) => (<Item onClick={onClick} selected={isSelected} title={it.title}  className="nav-item"> {it.title} </Item>)}
+                </SectionLink>
+            )
+        })
     }
 
     return (
