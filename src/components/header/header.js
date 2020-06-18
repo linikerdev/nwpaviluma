@@ -5,6 +5,11 @@ import { Container } from 'reactstrap';
 import Menu from './menu'
 import logo from '../../assets/logo/logo.png'
 
+import '../../assets/slides/slider1.jpg'
+import '../../assets/slides/slider2.jpg'
+import '../../assets/slides/slider3.jpg'
+
+
 
 
 export default (props) => {
@@ -71,10 +76,10 @@ const BarLogo = styled.div`
   flex-direction: column;
   align-items: center;
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+80,0a0c06+100&1+58,0+100 */
-background: -moz-linear-gradient(top,  rgba(255,255,255,1) 58%, rgba(255,255,255,0.48) 80%, rgba(10,12,6,0) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 58%,rgba(255,255,255,0.48) 80%,rgba(10,12,6,0) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  rgba(255,255,255,1) 58%,rgba(255,255,255,0.48) 80%,rgba(10,12,6,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000a0c06',GradientType=0 ); /* IE6-9 */ 
+  background: -moz-linear-gradient(top,  rgba(255,255,255,1) 58%, rgba(255,255,255,0.48) 80%, rgba(10,12,6,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 58%,rgba(255,255,255,0.48) 80%,rgba(10,12,6,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(255,255,255,1) 58%,rgba(255,255,255,0.48) 80%,rgba(10,12,6,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000a0c06',GradientType=0 ); /* IE6-9 */ 
 `;
 
 

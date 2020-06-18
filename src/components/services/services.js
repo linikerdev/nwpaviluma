@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
 import { Container, Row, Col } from 'reactstrap';
-
+import { isMobile } from 'react-device-detect';
 
 export default (props) => {
     const [services] = useState([
-        { title: "CONSTRUÇÃO DE ESTRADA", icon: "icon1.png", image: "image1.png" },
+        { title: "CONSTRUÇÃO DE ESTRADAS", icon: "icon1.png", image: "image1.png" },
         { title: "CERTIFICAÇÃO DE MATERIAIS", icon: "icon2.png", image: "image3.png" },
         { title: "ESTRADAS E RODOVIAS", icon: "icon3.png", image: "image2.png" },
         { title: "CAMINHOS DE ACESSO", icon: "icon4.png", image: "image4.png" },
@@ -14,7 +14,7 @@ export default (props) => {
     ])
 
     const makeBox = (img, icon, text) => (
-        <Box>
+        <Box sm="6" xs="6" md="4">
             <img className="bg" src={require(`../../assets/services_images/${img}`)} alt="image1" />
             <BoxText>
                 <img src={require(`../../assets/services_icons/${icon}`)} alt="icon1" />
@@ -29,9 +29,9 @@ export default (props) => {
             <Title>O QUE NÓS FAZEMOS</Title>
             <Subtitle>
                 Nossos serviços de construção de estradas ajudam a entender o comportamento dos materiais de estradas em relação às cargas esperadas e aos mecanismos de deterioração.
-                Os serviços de construção de estradas da Highwayz são o desempenho e a durabilidade de materiais e produtos para estradas.
+                Os serviços de construção de estradas da Paviluma são o desempenho e a durabilidade de materiais e produtos para estradas.
                 </Subtitle>
-            <Row md="3">
+            <Row >
                 {services.map(({ title, icon, image }) => makeBox(image, icon, title))}
             </Row>
         </Services >
@@ -66,7 +66,7 @@ const Box = styled(Col)`
     margin-bottom: 15px;
     .bg{
         width:100%;
-        border:5px solid  #FE7D0A;
+        border:2px solid  #FE7D0A;
         border-radius: 5px;
     }
 `
@@ -75,7 +75,7 @@ const BoxText = styled.div`
     
     .text{
         font-family: "Hind", Sans-serif;
-        font-size: 20px;
+        font-size: ${props => isMobile ? 10 : 20}px!important;
         font-weight: 600;
         vertical-align:middle;
         display:flex;
