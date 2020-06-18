@@ -41,6 +41,8 @@ export default (props) => {
 const Services = styled(Container)`
     display:flex;
     flex-direction:column;
+    padding: 100px 0;
+   width:90%;
 `
 
 const Title = styled.div`
