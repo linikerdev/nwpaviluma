@@ -13,7 +13,7 @@ export default (props) => {
   const mountMenu = () => {
     return props.itens.map((it, i) => {
       return (
-        <SectionLink section={it.id} key={i}>
+        <SectionLink section={it.id || ""} key={i}>
           {({ onClick, isSelected }) => (
             <Item
               onClick={onClick}
