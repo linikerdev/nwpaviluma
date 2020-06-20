@@ -19,7 +19,7 @@ export default () => {
     { title: "home", id: "home" },
     { title: "Sobre", id: "about" },
     { title: "Serviços", id: "services" },
-    { title: "Contato", target: "contact" },
+    { title: "Contato", id: "contact" },
   ]);
 
   return (
