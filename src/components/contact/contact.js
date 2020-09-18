@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import axios from 'axios'
 import {
   Container,
   Row,
@@ -17,7 +18,11 @@ import {
 } from "react-icons/fa";
 
 export default (props) => {
-  const [infoEmail, setInfo] = useState({});
+  const [infoEmail, setInfo] = useState({
+    // name: "liniker Silva",
+    // email: "teste@teste.com",
+    // message: "isso é um teste"
+  });
 
   const handleChange = (event) => {
     setInfo({
@@ -26,14 +31,31 @@ export default (props) => {
     });
   };
 
-  const sendEmail = () =>
-    !invalidForm ? console.log(infoEmail) : console.log("erro");
+  const submitForm = () => infoEmail ? sendMail() : console.log("erro");
+
+
+  const sendMail = () => {
+    if(!invalidForm) {
+      axios.post('http://localhost:8000/api/mail', infoEmail, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }).then(it => console.log(it))
+      return false;
+    }
+    console.log('erro ao processar')
+  }
+
+
+
 
   const invalidForm = !infoEmail.name || !infoEmail.email || !infoEmail.message;
+
   return (
     <Contact>
       <Container>
-        <Title>FALE CONOSCO</Title>
+        <Title>FALE CONOSCO </Title>
         <Row>
           <Col md="5" xs="12" sm="12">
             <InfoBox border>
@@ -69,7 +91,7 @@ export default (props) => {
                   onChange={handleChange}
                   value={infoEmail.name || ""}
                   placeholder="Informe seu nome"
-                />
+                  />
               </FormGroup>
               <FormGroup>
                 <LabelInfo for="email">Email</LabelInfo>
@@ -80,7 +102,7 @@ export default (props) => {
                   onChange={handleChange}
                   value={infoEmail.email || ""}
                   placeholder="Informe seu email"
-                />
+                  />
               </FormGroup>
               <FormGroup>
                 <LabelInfo for="exampleText">Mensagem:</LabelInfo>
@@ -92,14 +114,14 @@ export default (props) => {
                   onChange={handleChange}
                   value={infoEmail.message || ""}
                   placeholder="Deixe sua mensagem"
-                />
+                  />
               </FormGroup>
               <ButtonSubmit
                 disabled={invalidForm}
-                onClick={sendEmail}
+                onClick={submitForm}
                 size="lg"
                 block
-              >
+                >
                 Enviar
               </ButtonSubmit>
             </Form>
@@ -111,92 +133,92 @@ export default (props) => {
 };
 
 const Contact = styled.div`
-  padding: 50px 0;
-  background-color: #e3710a;
+padding: 50px 0;
+background-color: #e3710a;
 `;
 
 const Title = styled.div`
-  text-align: center;
-  font-family: "Hind", Sans-serif;
-  font-size: 24px;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-style: normal;
-  text-decoration: none;
-  line-height: 1.44em;
-  letter-spacing: 0px;
-  color: #fff;
-  margin-bottom: 70px
+text-align: center;
+font-family: "Hind", Sans-serif;
+font-size: 24px;
+font-weight: 600;
+text-transform: uppercase;
+font-style: normal;
+text-decoration: none;
+line-height: 1.44em;
+letter-spacing: 0px;
+color: #fff;
+margin-bottom: 70px
 `;
 
 const ButtonSubmit = styled(Button)`
-  border: 2px solid #fff7 !important;
-  background-color: transparent;
-  transition: 1s;
-  font-weight: 600;
-  font-size: 18px;
-  :hover {
-    background-color: #fff7;
-    color: #e3710a;
-    cursor: pointer;
-  }
+border: 2px solid #fff7 !important;
+background-color: transparent;
+transition: 1s;
+font-weight: 600;
+font-size: 18px;
+:hover {
+  background-color: #fff7;
+  color: #e3710a;
+  cursor: pointer;
+}
 `;
 const LabelInfo = styled(Label)`
-  color: #fff;
+color: #fff;
 `;
 const InputStyled = styled(Input)`
-  min-height: 40px;
+min-height: 40px;
+background: #fff4;
+border: thin solid #fff2;
+color: #fff;
+outline: none;
+border: none;
+
+&.textarea {
+  min-height: 140px;
+}
+&:focus-within {
+  border: dotted 1px #fff8;
   background: #fff4;
-  border: thin solid #fff2;
+  box-shadow: none;
   color: #fff;
-  outline: none;
-  border: none;
+}
+&:active,
+&:visited {
+  box-shadow: none;
+  background: #fff4;
+  color: #fff;
+}
 
-  &.textarea {
-    min-height: 140px;
-  }
-  &:focus-within {
-    border: dotted 1px #fff8;
-    background: #fff4;
-    box-shadow: none;
-    color: #fff;
-  }
-  &:active,
-  &:visited {
-    box-shadow: none;
-    background: #fff4;
-    color: #fff;
-  }
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fff4;
+  opacity: 1; /* Firefox */
+}
 
-  ::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #fff4;
-    opacity: 1; /* Firefox */
-  }
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #fff4;
+}
 
-  :-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: #fff4;
-  }
-
-  ::-ms-input-placeholder {
-    /* Microsoft Edge */
-    color: #fff4;
-  }
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #fff4;
+}
 `;
 
 const InfoBox = styled.div`
-  display: flex;
-  border-bottom: ${(props) => (!!props.border ? "thin dotted #fff8" : "none")};
-  padding: 10px;
-  margin: 10px;
-  .icon {
-    font-size: 26px;
-    color: #fff8;
-  }
-  .text {
-    font-family: "Hind", Sans-serif;
-    margin: 12px 10px;
-    color: #fff8
-  }
+display: flex;
+border-bottom: ${(props) => (!!props.border ? "thin dotted #fff8" : "none")};
+padding: 10px;
+margin: 10px;
+.icon {
+  font-size: 26px;
+  color: #fff8;
+}
+.text {
+  font-family: "Hind", Sans-serif;
+  margin: 12px 10px;
+  color: #fff8
+}
 `;

@@ -26,16 +26,17 @@ export default (props) => {
       <Container>
         <Title>SOBRE NÓS</Title>
         <Text>
-          Lorem Ipsum é simplesmente uma simulação de texto da indústria
-          tipográfica e de impressos, e vem sendo utilizado desde o século XVI,
-          quando um impressor desconhecido pegou uma bandeja de tipos e os
-          embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum
-          sobreviveu não só a cinco séculos, como também ao salto para a
-          editoração eletrônica, permanecendo essencialmente inalterado. Se
-          popularizou na década de 60, quando a Letraset lançou decalques
-          contendo passagens de Lorem Ipsum, e mais recentemente quando passou a
-          ser integrado a softwares de editoração eletrônica como Aldus
-          PageMaker.
+          São quase 10 anos desenvolvendo novas tecnologias para o segmento de
+          pavimentação. A experiência aliada aos investimentos em pesquisa e
+          capacitação técnica, levaram a <strong>NW PAVILUMA</strong> industrialização de
+          ligantes asfálticos, sendo reconhecida pela qualidade e inovação nos
+          produtos e serviços oferecidos.
+        </Text>
+        <Text>
+          Além disso, a <strong>NW PAVILUMA</strong> realiza projetos, consultoria, planejamento
+          e uma permanente assistência técnica, contando com uma equipe técnica
+          qualificada que visa apresentar as melhores soluções em pavimentação
+          envolvendo produtos asfálticos.
         </Text>
         <Diference>
           <SubTitle>NOSSO DIFERENCIAL</SubTitle>
@@ -58,13 +59,16 @@ const About = styled.div`
     ),
     url(${(props) => props.bg});
 `;
-const Text = styled.div`
+const Text = styled.p`
+  text-align: center;
   font-family: "Hind", Sans-serif;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 500;
   color: #fff;
-  line-height: 2.5;
-  text-align: justify;
+  line-height: 1.8;
+  strong {
+    color: #fe7d0a;
+  }
 `;
 
 const Title = styled.div`
